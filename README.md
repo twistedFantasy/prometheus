@@ -1,3 +1,9 @@
+[Prometheus](https://prometheus.io/) is an open-source software application used for event monitoring and alerting.
+It records real-time metrics in a time series database (allowing for high dimensionality) built
+using a HTTP pull model, with flexible queries and real-time alerting. The project is written in Go
+and licensed under the Apache 2 License, with source code available on GitHub, and is a graduated
+project of the Cloud Native Computing Foundation, along with Kubernetes and Envoy.
+
 # Dirty hands
 
 Create new virtual machine with Vagrant
@@ -22,11 +28,11 @@ docker-compose -f docker-stack-monitoring.yml \
 ### Docker Swarm
 Build docker images
 ``` 
-docker build --build-arg BRANCH="develop" -f prometheus/Dockerfile -t "dockerx-prometheus" .
-docker build -f alertmanager/Dockerfile -t "dockerx-alertmanager" .
-docker build -f grafana/Dockerfile -t "dockerx-grafana" .
+docker build --build-arg BRANCH="develop" -f prometheus/Dockerfile -t "twistedfantasy-prometheus" .
+docker build -f alertmanager/Dockerfile -t "twistedfantasy-alertmanager" .
+docker build -f grafana/Dockerfile -t "twistedfantasy-grafana" .
 
-docker build -f nginx/Dockerfile -t "dockerx-nginx" .
+docker build -f nginx/Dockerfile -t "twistedfantasy-nginx" .
 ```
 
 Activate docker swarm
@@ -37,7 +43,7 @@ docker swarm init --advertise-addr 192.168.56.101
 ```
 docker stack deploy --with-registry-auth -c docker-stack-monitoring.yml \
  -c docker-stack-exporters.yml -c docker-stack-db.yml \
- -c docker-stack-common.yml dockerX-monitoring
+ -c docker-stack-common.yml twistedfantasy-monitoring
 ```
 
 List of stacks
@@ -52,7 +58,7 @@ docker service ls
 
 Get logs for a service
 ``` 
-docker service logs -f dockerX-monitoring_elasticsearch
+docker service logs -f twistedfantasy-monitoring_elasticsearch
 ```
 
 Open Grafana in browser
@@ -67,7 +73,7 @@ http://192.168.56.101:9090/
 
 Delete a stack
 ``` 
-docker stack rm dockerX-monitoring
+docker stack rm twistedfantasy-monitoring
 ```
 
 Remove
@@ -81,7 +87,7 @@ docker system prune --all
 
 Delete elasticsearch volume
 ``` 
-docker volume rm dockerX-monitoring_grafana-data dockerX-monitoring_prometheus-data
+docker volume rm twistedfantasy-monitoring_grafana-data twistedfantasy-monitoring_prometheus-data
 ```
 
 Deactivate docker swarm

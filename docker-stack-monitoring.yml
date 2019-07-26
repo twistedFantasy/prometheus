@@ -10,7 +10,7 @@ volumes:
 
 services:
   prometheus:
-    image: "dockerx-prometheus"
+    image: "twistedfantasy-prometheus"
     deploy:
       replicas: 1
       placement:
@@ -30,7 +30,7 @@ services:
       - network
 
   alertmanager:
-    image: "dockerx-alertmanager"
+    image: "twistedfantasy-alertmanager"
     deploy:
       replicas: 1
       placement:
@@ -43,7 +43,7 @@ services:
       - network
 
   grafana:
-   image: "dockerx-grafana"
+   image: "twistedfantasy-grafana"
    deploy:
      replicas: 1
      placement:

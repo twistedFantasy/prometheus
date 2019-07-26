@@ -6,7 +6,7 @@ networks:
 
 services:
   nginx:
-    image: "dockerx-nginx"
+    image: "twistedfantasy-nginx"
     deploy:
       replicas: 1
     ports:
