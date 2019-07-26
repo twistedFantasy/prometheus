@@ -1,0 +1,11 @@
+groups:
+- name: cpu
+  rules:
+    - alert: high_host_cpu_utilisation
+      expr: 100 - (avg by(instance) (irate(node_cpu{mode="idle"}[5m])) * 100) > 80
+      for: 30m
+      labels:
+        severity: critical
+      annotations:
+        summary: CPU Utilisation Alert
+        description: 'High CPU utilisation detected for 30m\n  VALUE = {{ $value }}\n  LABELS: {{ $labels }}'

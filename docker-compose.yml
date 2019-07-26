@@ -1,0 +1,29 @@
+version: '3.7'
+
+networks:
+  network:
+
+services:
+  prometheus:
+    build:
+      dockerfile: prometheus/Dockerfile
+      context: ./
+      args:
+        BRANCH: "develop"
+
+  alertmanager:
+    build:
+      dockerfile: ./alertmanager/Dockerfile
+      context: ./
+
+  grafana:
+    build:
+      dockerfile: ./grafana/Dockerfile
+      context: ./
+
+  nginx:
+    build:
+      dockerfile: ./nginx/Dockerfile
+      context: ./
+    ports:
+      - "80:80"
