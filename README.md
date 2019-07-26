@@ -4,7 +4,7 @@ using a HTTP pull model, with flexible queries and real-time alerting. The proje
 and licensed under the Apache 2 License, with source code available on GitHub, and is a graduated
 project of the Cloud Native Computing Foundation, along with Kubernetes and Envoy.
 
-# Dirty hands
+# Dip your hands in the work
 
 Create new virtual machine with Vagrant
 ```
